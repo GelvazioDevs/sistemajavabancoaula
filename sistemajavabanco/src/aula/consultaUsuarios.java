@@ -1,11 +1,8 @@
 package aula;
 
-import viewconsulta.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.Usuario;
-import principal.Conexao;
 
 /**
  * @author Gelvazio Camargo
@@ -13,7 +10,6 @@ import principal.Conexao;
 public class consultaUsuarios extends javax.swing.JDialog {
 
     public static final int BUSCAR_TODOS = 0;
-
     public int codigo;
     public String nome;
 

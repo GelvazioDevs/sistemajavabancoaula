@@ -15,7 +15,7 @@ public class Principal extends javax.swing.JFrame {
 
 //    CadastroCliente cli     = new CadastroCliente();
 //    CadastroVendedores vend = new CadastroVendedores();
-//    CadastroProdutos pro    = new CadastroProdutos();
+     // CadastroProdutos pro    = new CadastroProdutos();
 //    CadastroVenda ven       = new CadastroVenda();
 //    
     CadastroUsuario usuario = new CadastroUsuario();
@@ -145,7 +145,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        //pro.setVisible(true);
+        // pro.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed

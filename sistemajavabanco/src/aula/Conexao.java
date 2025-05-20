@@ -30,7 +30,7 @@ public class Conexao {
         String host = m.getHost();
         String senha = m.getSenha();
         
-        String url     = "jdbc:postgresql://" + host + "/" + database;
+        String url = "jdbc:postgresql://" + host + "/" + database;
         
         try {
             Class.forName(driver);
@@ -107,6 +107,7 @@ public class Conexao {
                 } else if(objeto instanceof Produto){
                     // Instanciar classe de produto
                     Produto produto = new Produto();
+                    
                     produto.setId(resultset.getInt("id"));
                     produto.setDescricao(resultset.getString("descricao"));
                     produto.setPrecocusto(resultset.getDouble("precocusto"));
@@ -118,15 +119,14 @@ public class Conexao {
                 }
             }
         } catch (SQLException erro) {
-            String message = erro.getMessage().toString();
+            String message = erro.getMessage().toString();            
+            
             System.out.println("Erro ao executar sql!");
             System.out.println(message);
             
-            MensagemSlack.slack("ERRO AO EXECUTAR SQL", "erro ao executar sql!" + sql, "netbeans");
-            
+            MensagemSlack.slack("ERRO AO EXECUTAR SQL", "erro ao executar sql!" + sql, "netbeans");            
             JOptionPane.showMessageDialog(null, "ERRO AO EXECUTAR SQL: \n" + erro.getMessage(), "ERRO AO EXECUTAR SQL", JOptionPane.ERROR_MESSAGE);                        
         }
-
         return lista;
     }
     
