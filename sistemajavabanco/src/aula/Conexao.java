@@ -114,6 +114,17 @@ public class Conexao {
                     produto.setPrecovenda(resultset.getDouble("precovenda"));
                     
                     lista.add(produto);
+                } 
+                else if(objeto instanceof Pessoa){
+                    // Instanciar classe de pessoa
+                    Pessoa pessoa = new Pessoa();
+                    
+                    pessoa.setCodigo(resultset.getInt("codigo"));
+                    pessoa.setNome(resultset.getString("nome"));
+                    pessoa.setEndereco(resultset.getString("endereco"));
+                    pessoa.setCpf(resultset.getString("cpf"));
+                    
+                    lista.add(pessoa);
                 } else {
                     throw new SQLException("OBJETO NAO ENCONTRADO!\nObjeto:" + objeto.getClass().toString(), sql);
                 }

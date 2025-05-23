@@ -14,8 +14,8 @@ import javax.swing.table.DefaultTableModel;
 public class consultaProdutosProfessor extends javax.swing.JFrame {
 
     public static final int BUSCAR_TODOS = 0;
-    public int codigo;
-    public String descricao;
+    private int codigo;
+    private String descricao;
     
     /**
      * Creates new form consultaProdutos
@@ -34,7 +34,7 @@ public class consultaProdutosProfessor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        btnConsultar = new javax.swing.JButton();
         comboboxFiltro = new javax.swing.JComboBox<>();
         edtPesquisa = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -43,10 +43,10 @@ public class consultaProdutosProfessor extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Consultar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnConsultar.setText("Consultar");
+        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnConsultarActionPerformed(evt);
             }
         });
 
@@ -92,7 +92,7 @@ public class consultaProdutosProfessor extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(edtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1))))
+                                .addComponent(btnConsultar))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -105,7 +105,7 @@ public class consultaProdutosProfessor extends javax.swing.JFrame {
                 .addComponent(botaoFiltrarTodos)
                 .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(btnConsultar)
                     .addComponent(comboboxFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(edtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -116,9 +116,7 @@ public class consultaProdutosProfessor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        System.out.println("clicou em consultar!!");
-        
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         int selecionado = 0;
         if (botaoFiltrarTodos.isSelected()) {
             selecionado = 999;
@@ -128,21 +126,12 @@ public class consultaProdutosProfessor extends javax.swing.JFrame {
         } else {
             selecionado = comboboxFiltro.getSelectedIndex();            
         }
-        
-        System.out.println("selecionado:" + selecionado);
-
         try {
             ArrayList<Produto> listaProdutos = getAllProdutos(selecionado);
             int totalRegistros = listaProdutos.size();
             if (totalRegistros == 0) {
                 JOptionPane.showMessageDialog(null, "Produto não encontrado para filtro selecionado!");
-            }
-            
-            
-            
-            
-            
-            else {
+            } else {
                 try {
                     atualizaTabelaProdutos(selecionado);
                 } catch (IOException ex) {
@@ -152,7 +141,7 @@ public class consultaProdutosProfessor extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(consultaProdutosProfessor.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void tabelaConsultaProdutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaConsultaProdutosMouseClicked
 //        codigo = Integer.parseInt(String.valueOf(tabelaConsultaProdutos.getModel().getValueAt(tabelaConsultaProdutos.getSelectedRow(), 0)));
@@ -251,9 +240,9 @@ public class consultaProdutosProfessor extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton botaoFiltrarTodos;
+    private javax.swing.JButton btnConsultar;
     private javax.swing.JComboBox<String> comboboxFiltro;
     private javax.swing.JTextField edtPesquisa;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabelaConsultaProdutos;
     // End of variables declaration//GEN-END:variables
