@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Produtos</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+<body>
+  <h1>Lista de Produtos</h1>
+  <ul id="lista-produtos"></ul>
+
+  <script defer async>
+    // Configuração Supabase
+    const SUPABASE_URL = 'https://rtjesmlbwmkfyyeoyubm.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ0amVzbWxid21rZnl5ZW95dWJtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDM2MTY1MjUsImV4cCI6MjA1OTE5MjUyNX0.FevEHLGhkNuCxUE0mENsBSPLgwDTukJw2EOv24OeQfg';
+    
+    let supabaseNew = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    // Função para buscar produtos
+    async function buscarProdutos() {
+      const { data, error } = await supabaseNew
+        .from('produto')
+        .select('*');
+
+      if (error) {
+        console.error('Erro ao buscar produtos:', error.message);
+        return;
+      }
+
+      const lista = document.getElementById('lista-produtos');
+      lista.innerHTML = ''; // limpa antes
+
+      data.forEach(produto => {
+        console.log(produto)
+        const item = document.createElement('li');
+        item.textContent = `${produto.descricao} - R$ ${produto.preco}`;
+        lista.appendChild(item);
+      });
+    }
+
+    // Chamar ao carregar
+    console.log('buscando produtos')
+    buscarProdutos();
+  </script>
+</body>
+</html>
